@@ -12,6 +12,15 @@ import (
 	"gorm.io/plugin/dbresolver"
 )
 
+// func New() (*gorm.DB, error) {
+// 	dsn := "sqlserver://ManuOrder:nkust215@163.18.42.223:1433?database=XMLY5000"
+// 	db, err := gorm.Open(sqlserver.Open(dsn), &gorm.Config{})
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	return db, nil
+// }
+
 func New() (*gorm.DB, error) {
 	const config = "sqlserver://%s:%s@%s:%s?database=%s"
 	sources := fmt.Sprintf(config,

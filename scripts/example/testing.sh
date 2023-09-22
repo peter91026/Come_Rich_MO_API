@@ -1,5 +1,5 @@
 #接下來會應用底下的讀寫分離提高SQL效能,SOURCES為寫,REPLICAS為讀
-export SOURCES_HOST=127.0.0.1
+ex SOURCES_HOST=127.0.0.1
 export SOURCES_PORT=5435
 export SOURCES_USER=postgres
 export SOURCES_PASSWORD=pg654321
