@@ -13,9 +13,13 @@ import (
 	routerFile "eirc.app/internal/v1/router/file"
 	routerLogin "eirc.app/internal/v1/router/login"
 	routerSalesInfo "eirc.app/internal/v1/router/sales_info"
+	routerManuOrder "eirc.app/internal/v1/router/manu_order"
 
 	accountModel "eirc.app/internal/v1/structure/accounts"
 	fileModel "eirc.app/internal/v1/structure/file"
+	customerModel "eirc.app/internal/v1/structure/customer"
+	manu_orderModel "eirc.app/internal/v1/structure/manu_order"
+	raw_materialModel "eirc.app/internal/v1/structure/raw_material"
 )
 
 // @version 0.1
@@ -37,6 +41,9 @@ func main() {
 	}
 	db.AutoMigrate(&fileModel.Table{})
 	db.AutoMigrate(&accountModel.Table{})
+	db.AutoMigrate(&customerModel.Table{})
+	db.AutoMigrate(&manu_orderModel.Table{})
+	db.AutoMigrate(&raw_materialModel.Table{})
 
 	route := router.Default()
 	route = routerCustomer.GetRoute(route, dbLY)      //客戶路由
@@ -44,6 +51,7 @@ func main() {
 	route = routerFile.GetRoute(route, db, dbLY)      //檔案上傳路由
 	route = routerAccount.GetRoute(route, db)         //帳戶路由
 	route = routerLogin.GetRoute(route, db)           //登陸路由
+	route = routerManuOrder.GetRoute(route, db)           //登陸路由
 
-	log.Fatal(http.ListenAndServe("192.168.50.239:8090", route))
+	log.Fatal(http.ListenAndServe("127.0.0.1:8090", route))
 }
