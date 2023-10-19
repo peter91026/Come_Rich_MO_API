@@ -24,7 +24,7 @@ func (s *service) Created(input *model.Created) (output *model.Base, err error) 
 
 		return nil, err
 	}
-
+	output.ManuOrderID = util.GenerateUUID() //隨機產生key
 	output.CreatedAt = util.NowToUTC()
 	output.UpdatedAt = util.NowToUTC()
 	output.IsDeleted = false
